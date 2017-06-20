@@ -7,25 +7,29 @@ import org.openqa.selenium.{By, WebDriver, WebElement}
 import org.scalatest.concurrent.{Eventually, IntegrationPatience}
 import org.scalatest.selenium.WebBrowser
 import org.scalatest.{Assertions, Matchers}
-import uk.gov.hmrc.$packageName$.pages.generic.WebPage
+import uk.gov.hmrc.$packageName$.pages.generic.BasePage
 
 
-trait NavigationSugar extends WebBrowser with Eventually with Assertions with Matchers with IntegrationPatience {
+trait NavigationSugar extends WebBrowser
+  with Eventually
+  with Assertions
+  with Matchers
+  with IntegrationPatience {
 
   val robot = new Robot()
 
-  def goOn(page: WebPage)(implicit webDriver: WebDriver) = {
+  def goOn(page: BasePage)(implicit webDriver: WebDriver) = {
     goTo(page)
     on(page)
   }
 
-  def on(page: WebPage)(implicit webDriver: WebDriver) = {
+  def on(page: BasePage)(implicit webDriver: WebDriver) = {
     val wait = new WebDriverWait(webDriver, 5)
     wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")))
     assert(page.isCurrentPage, s"Page was not loaded: \${page.currentUrl}")
   }
 
-  def notOn(page: WebPage)(implicit webDriver: WebDriver) = {
+  def notOn(page: BasePage)(implicit webDriver: WebDriver) = {
     eventually {
       webDriver.findElement(By.tagName("body"))
     }

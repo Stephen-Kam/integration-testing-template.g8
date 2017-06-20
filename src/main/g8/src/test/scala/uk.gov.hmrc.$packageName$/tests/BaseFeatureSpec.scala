@@ -12,9 +12,7 @@ import org.apache.http.impl.client.HttpClientBuilder
 import org.apache.http.message.BasicNameValuePair
 import org.scalatest._
 import play.api.libs.json.{JsArray, JsObject, JsString}
-import uk.gov.hmrc.$packageName$.pages.generic.NginxFailurePage
-import uk.gov.hmrc.$packageName$.util.SingletonDriver
-import uk.gov.hmrc.$packageName$.util.{Env, ImplicitWebDriverSugar, NavigationSugar}
+import uk.gov.hmrc.$packageName$.util.{Env, ImplicitWebDriverSugar, NavigationSugar, SingletonDriver}
 
 trait BaseFeatureSpec
   extends FeatureSpec
@@ -26,15 +24,15 @@ trait BaseFeatureSpec
     with NavigationSugar
     with Retries {
 
-  override protected def beforeEach(testData: TestData): Unit = Env.proxy.newHar(testData.name)
+  override protected def beforeEach(testData: TestData): Unit = proxy.newHar(testData.name)
 
 
   val fileExtensionBlacklist = Seq("js", "css", "png", "gif", "htm", "ico")
 
   override protected def afterEach(testData: TestData): Unit = {
-    if (!Env.withHar) return
+    if (!withHar) return
     import scala.collection.JavaConversions._
-    println(JsObject(Seq("scenarioRequests" -> JsArray(Env.proxy.getHar.getLog.getEntries
+    println(JsObject(Seq("scenarioRequests" -> JsArray(proxy.getHar.getLog.getEntries
       .filter(_.getRequest.getHeaders.exists(_.getValue.contains("text/html")))
       .filter(_.getRequest.getUrl.contains(Env.baseUrl))
       .filterNot(harEntry => {
@@ -70,8 +68,8 @@ trait BaseFeatureSpec
 
 
   private def takeScreenShot(testMethodName: String) {
-    println(s"\$testMethodName : FAILED")
-    println(s"Taking screenshot of '\$testMethodName'")
+    println(s"$testMethodName : FAILED")
+    println(s"Taking screenshot of '$testMethodName'")
     setCaptureDir("target/screenshots")
     try {
       captureTo(testMethodName)
@@ -100,16 +98,9 @@ trait BaseFeatureSpec
       case f: Failed => {
         takeScreenShot(test.name)
         if (System.getProperty("browser") == "browserstack") markBrowserstackTestAsFailed(test.name)
-        if (NginxFailurePage.isCurrentPage) {
-          println(s"Retrying \${test.name} after nginx error page shown")
-          withRetry {
-            super.withFixture(test)
-          }
-        } else f
+        f
       }
-      case otherOutcome => {
-        otherOutcome
-      }
+      case otherOutcome => otherOutcome
     }
   }
 
