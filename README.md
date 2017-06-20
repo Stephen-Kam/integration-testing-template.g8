@@ -1,9 +1,9 @@
 A [Giter8][g8] template for ...!
 
-# HMRC Scalatest-Testing-Template
+# HMRC Integration-Testing-Template
 
 
-This template will generate a base project which makes use of the Scalatest Featurespec framework
+This template will generate a base integration/contract tests project which makes use of the Play2.5 framework
 and includes the minimum required dependencies to function correctly.
 
 Packages and structure is also supplied in the hopes that it will help foster a standard way of organising a test project
@@ -12,8 +12,6 @@ to make it easier for other testers to view other people's code.
 This template makes use of build.sbt and plugins.sbt.
 
 No enterprise dependencies are used so can be stored either in enterprise or in the open. (assuming of course no PI information is stored)
-
-A chromedriver has also been included for both Windows and Linux/Apple, located in the drivers package
 
 ## How to use
 
