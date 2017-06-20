@@ -22,7 +22,7 @@ trait BasePage extends org.scalatest.selenium.Page
 
   override implicit val patienceConfig: PatienceConfig = PatienceConfig(timeout = scaled(Span(5, Seconds)), interval = scaled(Span(500, Millis)))
 
-  def navigateTo(): Unit = go to s"$baseUrl/$url"
+  def navigateTo(): Unit = go to \s"$baseUrl/\$url"
 
   def isCurrentPage: Boolean = false
 
