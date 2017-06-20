@@ -69,7 +69,7 @@ trait BaseFeatureSpec
 
   private def takeScreenShot(testMethodName: String) {
     println(s"$testMethodName : FAILED")
-    println(s"Taking screenshot of '$testMethodName'")
+    println(s"Taking screenshot of '\$testMethodName'")
     setCaptureDir("target/screenshots")
     try {
       captureTo(testMethodName)
