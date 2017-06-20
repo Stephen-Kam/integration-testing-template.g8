@@ -2,7 +2,7 @@ import play.core.PlayVersion
 
 val nexusPreviewHost: String = System.getProperty("hmrc.repo.host", "https://nexus-preview.tax.service.gov.uk")
 
-lazy val govUkTaxIntegrationTests: Project = Project("super-ted-acceptance-tests", file("."))
+lazy val govUkTaxIntegrationTests: Project = Project("$name$", file("."))
   .settings(version := "0.0.1-SNAPSHOT",
     scalaVersion := "2.11.8",
     resolvers ++= Seq("hmrc-snapshots" at nexusPreviewHost + "/content/repositories/hmrc-snapshots",
