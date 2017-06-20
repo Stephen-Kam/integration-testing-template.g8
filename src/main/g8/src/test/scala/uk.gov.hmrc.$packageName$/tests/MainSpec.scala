@@ -1,6 +1,7 @@
 package uk.gov.hmrc.$packageName$.tests
 
-import uk.gov.hmrc.$packageName$.support.{Actions, IntegrationSpec}
+import uk.gov.hmrc.$packageName$.actions.Actions
+import uk.gov.hmrc.$packageName$.support.IntegrationSpec
 import uk.gov.hmrc.$packageName$.tags.RunOnlyInDev
 
 class MainSpec extends IntegrationSpec with Actions {

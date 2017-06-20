@@ -1,7 +1,8 @@
-package uk.gov.hmrc.$packageName$.support
+package uk.gov.hmrc.$packageName$.actions
 
 import play.api.libs.json.JsValue
 import play.api.libs.ws.WSResponse
+import uk.gov.hmrc.$packageName$.support.Support
 
 trait EndPointTwoActions extends Support {
 
