@@ -10,7 +10,6 @@ lazy val govUkTaxIntegrationTests: Project = Project("super-ted-acceptance-tests
       "typesafe-releases" at nexusPreviewHost + "/content/repositories/typesafe-releases",
       Resolver.url("hmrc-sbt-plugin-releases", url("https://dl.bintray.com/hmrc/sbt-plugin-releases"))(Resolver.ivyStylePatterns)),
     libraryDependencies ++= Seq(
-      "com.typesafe.play" %% "play-json" % "2.5.12",
       "org.pegdown" % "pegdown" % "1.4.2" % "test",
       "net.lightbody.bmp" % "browsermob-core" % "2.1.1",
       "org.scalactic" %% "scalactic" % "3.0.1",
