@@ -21,7 +21,7 @@ SBT version 13.13 or above is required
 
 Then enter the following:
 
->sbt new Stephen-Kam/testing-repository-template.g8
+>sbt new Stephen-Kam/integration-testing-template.g8
 
 You'll be asked a number of questions on how to name various parts of the project
 

@@ -2,7 +2,7 @@ package uk.gov.hmrc.$packageName$.utils
 
 trait Env {
 
-  val environmentProperty = Option(System.getProperty("environment"))
+  val environmentProperty = Option(System.getProperty("environment", "local"))
 
   val baseUrl: String = environmentProperty match {
     case Some("local") => ""
