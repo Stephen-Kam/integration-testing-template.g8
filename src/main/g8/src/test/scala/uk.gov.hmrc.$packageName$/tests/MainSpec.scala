@@ -24,7 +24,7 @@ class MainSpec extends IntegrationSpec with Actions {
       response.status shouldBe 200
     }
 
-    Scenario("Example POST") {
+    scenario("Example POST") {
       When("I post to a site")
       val foo = postExample("", sample)
 
