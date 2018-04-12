@@ -26,7 +26,7 @@ class MainSpec extends IntegrationSpec with Actions {
 
     scenario("Example POST") {
       When("I post to a site")
-      val foo = postExample("", sample)
+      val foo = postExample("", getFromSource("sample"))
 
       Then("The response status will be OK")
       foo.status shouldBe OK
