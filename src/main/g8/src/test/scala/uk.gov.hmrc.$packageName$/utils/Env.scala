@@ -6,9 +6,9 @@ trait Env {
 
   val baseUrl: String = environmentProperty match {
     case Some("local") => ""
-    case Some("dev") => "https://www-dev.tax.service.gov.uk"
-    case Some("qa") => "https://www-qa.tax.service.gov.uk"
-    case Some("staging") => "https://www-staging.tax.service.gov.uk"
+    case Some("dev") => "https:"
+    case Some("qa") => "https:"
+    case Some("staging") => "https:"
     case _ => throw new IllegalArgumentException(s"Environment '\$environmentProperty' not known")
   }
 }
